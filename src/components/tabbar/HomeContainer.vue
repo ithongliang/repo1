@@ -1,11 +1,7 @@
 <template>
 	<div>
 		<!--轮播图区域-->
-		<mt-swipe :auto="4000">
-			<mt-swipe-item v-for="item in lunBoList" :key="item.url">
-				<img :src="item.url" alt="">
-			</mt-swipe-item>
-		</mt-swipe>
+		<swiper :lunbotuList = "lunBoList" :isfull="true"></swiper>
 		
 		<!--六宫格-->
 		<ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -16,19 +12,19 @@
 				</router-link>
 			</li>
 			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-				<a href="#">
+				<router-link to="/home/photolist">
 					<!--<span class="mui-icon mui-icon-email">
 						<span class="mui-badge">5</span>
 					</span>-->
 					<img src="../../images/menu2.png" alt="">
 					<div class="mui-media-body">图片分享</div>
-				</a>
+				</router-link>
 			</li>
 			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-				<a href="#">
+				<router-link to="/home/goodslist">
 					<img src="../../images/menu3.png" alt="">
 					<div class="mui-media-body">商品购买</div>
-				</a>
+				</router-link>
 			</li>
 			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 				<a href="#">
@@ -54,6 +50,7 @@
 </template>
 
 <script>
+	import swiper from "../subcomponets/swiper.vue";
 	export default {
 	    data(){
 	        return {
@@ -66,20 +63,14 @@
 					}
 			},
 			
-			methods: { }
+			methods: { },
+			components: {
+	    		swiper
+			}
 	}
 </script>
 
 <style lang="scss" scoped>
-	.mint-swipe {
-		height: 200px;
-		.mint-swipe-item {
-			img {
-				width: 100%;
-				height: 100%;
-			}
-		}
-	}
 	
 	.mui-grid-view.mui-grid-9 {
 		background-color: #fff;

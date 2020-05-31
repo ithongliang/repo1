@@ -1,8 +1,8 @@
 <template>
     <div>
         <ul class="mui-table-view">
-            <li class="mui-table-view-cell mui-media" v-for="item in newList" :key="item.uniquekey">
-                <a :href="item.url">
+            <li class="mui-table-view-cell mui-media" v-for="(item,index) in newList" :key="item.uniquekey">
+                <router-link :to="'/home/newsInfo/'+index">
                     <img class="mui-media-object mui-pull-left" :src="item.img_url">
                     <div class="mui-media-body">
                         <h1>{{item.title}}</h1>
@@ -11,7 +11,7 @@
                             <span>作者: {{item.author}}</span>
                         </p>
                     </div>
-                </a>
+                </router-link>
             </li>
         </ul>
     </div>
@@ -19,6 +19,7 @@
 
 <script>
     import { Toast } from 'mint-ui'
+    import  comment from  '../subcomponets/comment.vue'
     export default {
         data(){
             return{
@@ -89,6 +90,9 @@
 									{img_url: "https://03imgmini.eastday.com/mobile/20200529/20200529150906_4c31a3660b93f27593f2e31016954dd4_1_mwpm_03200403.jpg",title: "我们回来了！明年再见", date:this.getTime(),author:"广州日报",url:"https://mini.eastday.com/a/200529150906366.html?qid=02263"},
 							]
             }
+        },
+        comments: {
+            'comment-box' : comment
         }
     }
 </script>
